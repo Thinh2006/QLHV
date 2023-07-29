@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quản lý học viện</title>
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Bootstrap 4 -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- JQuery UI -->
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+
+	<!-- Animate -->
+	<!-- <link rel="stylesheet" href="css/animate.css"> -->
+
+	<!-- My CSS -->
+	<link rel="stylesheet" href="css/modal.css">
+
+	<link rel="stylesheet" href="css/style4.css">
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				<h3>Học viện Cybersoft</h3>
+				<strong>BS</strong>
+			</div>
+
+			<ul class="list-unstyled components">
+				<li class="active">
+					<a href="#homeSubmenu">
+						<i class="fa fa-home"></i>
+						Home
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-briefcase"></i>
+						About
+					</a>
+					<a href="#pageSubmenu">
+						<i class="fa fa-files-o"></i>
+						Pages
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-link"></i>
+						Portfolio
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-paperclip"></i>
+						FAQ
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-paper-plane"></i>
+						Contact
+					</a>
+				</li>
+			</ul>
+
+			<ul class="list-unstyled CTAs">
+				<li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+				</li>
+				<li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+			</ul>
+		</nav>
+
+		<!-- Page Content Holder -->
+		<div id="content">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+
+					<div class="navbar-header">
+						<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+							<i class="glyphicon glyphicon-align-left"></i>
+							<span>Toggle Sidebar</span>
+						</button>
+					</div>
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">Page</a></li>
+							<li><a href="#">Page</a></li>
+							<li><a href="#">Page</a></li>
+							<li><a href="#">Page</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+			<div class="container">
+				<div class="card text-center">
+					<!-- Header -->
+					<div class="card-header myCardHeader">
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="text-left text-primary font-weight-bold">Danh sách người dùng</h3>
+							</div>
+							<div class="col-md-6 text-right">
+								<button class="btn btn-primary" id="btnThem" data-toggle="modal"
+									data-target="#myModal">Thêm</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Body -->
+					<div class="card-body">
+						<div class="row mb-3">
+							<div class="col">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Tìm theo loại người dùng" id="searchName">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="btnTimNV"><i class="fa fa-search"></i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<table class="table table-bordered table-hover myTable">
+							<thead class="text-primary">
+								<tr>
+									<th class="nowrap">
+										<span class="mr-1">Mã</span>
+										<i class="fa fa-arrow-up" id="SapXepTang"></i>
+										<i class="fa fa-arrow-down" id="SapXepGiam"></i>
+									</th>
+									<th>Họ và tên</th>
+									<th>Email</th>
+									<th>Địa chỉ</th>
+									<th>Điểm TB</th>			
+									<th>Tổng lương</th>
+									<th>Loại người dùng</th>
+									<th><em class="fa fa-cog"></em></th>
+								</tr>
+							</thead>
+							<tbody id="tableDanhSach">
+
+							</tbody>
+						</table>
+					</div>
+
+					<!-- Footer -->
+					<div class="card-footer myCardFooter">
+						<nav>
+							<ul class="pagination justify-content-center" id="ulPhanTrang">
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- The Modal -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<header class="head-form mb-0">
+					<h2 id="header-title">Log In</h2>
+				</header>
+
+				<!-- Modal Header -->
+				<!-- 	<div class="modal-header">
+					<h4 class="modal-title" id="modal-title">Modal Heading</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div> -->
+
+				<!-- Modal body -->
+				<div class="modal-body">
+
+					<form role="form" id="formNV">
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+								</div>
+								<select class="form-control" id="chucvu">
+									<option>Chọn chức vụ</option>
+									<option>Nhân viên</option>
+									<option>Học viên</option>
+									<option>Khách hàng</option>
+								</select>
+							</div>
+
+							<span class="sp-thongbao" id="tbChucVu"></span>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-user"></i></span>
+								</div>
+								<input type="text" name="tk" id="tknv" class="form-control input-sm"
+									placeholder="Mã">
+							</div>
+
+							<span class="sp-thongbao" id="tbTKNV"></span>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-address-book"></i></span>
+								</div>
+								<input type="name" name="name" id="name" class="form-control input-sm"
+									placeholder="Họ và tên">
+							</div>
+							<span class="sp-thongbao" id="tbTen"></span>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+								</div>
+								<input type="email" name="email" id="email" class="form-control input-sm"
+									placeholder="Email">
+							</div>
+
+							<span class="sp-thongbao" id="tbEmail"></span>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-key"></i></span>
+								</div>
+								<input type="text" name="diachi" id="diachi" class="form-control input-sm"
+									placeholder="Địa chỉ">
+							</div>
+							<span class="sp-thongbao" id="tbdiachi"></span>
+						</div>
+
+						<div class="form-group form-plus" id="workingDay">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+								</div>
+								<input type="text" name="ngaylam" id="datepicker" class="form-control"
+									placeholder="Số ngày làm">
+							</div>
+
+							<span class="sp-thongbao" id="tbNgay"></span>
+						</div>
+						
+						<div class="form-group form-plus" id="salary">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-money-bill"></i></span>
+								</div>
+								<input type="text" name="luongCB" id="luongCB" class="form-control input-sm"
+									placeholder="Lương theo ngày">
+							</div>
+							<span class="sp-thongbao" id="tbLuongCB"></span>
+						</div>
+						<div class="form-group form-plus" id="mathGrade">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-calculator"></i></span>
+								</div>
+								<input type="text" name="diemtoan" id="diemtoan" class="form-control input-sm"
+									placeholder="Điểm Toán">
+							</div>
+							<span class="sp-thongbao" id="tbdiemtoan"></span>
+						</div>
+						<div class="form-group form-plus" id="physicGrade">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-screwdriver"></i></span>
+								</div>
+								<input type="text" name="diemly" id="diemly" class="form-control input-sm"
+									placeholder="Điểm Lý">
+							</div>
+							<span class="sp-thongbao" id="tbdiemly"></span>
+						</div>
+						<div class="form-group form-plus" id="chemGrade">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-flask-vial"></i></span>
+								</div>
+								<input type="text" name="diemhoa" id="diemhoa" class="form-control input-sm"
+									placeholder="Điểm Hóa">
+							</div>
+							<span class="sp-thongbao" id="tbdiemhoa"></span>
+						</div>
+						<div class="form-group form-plus" id="comName">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-regular fa-building"></i></span>
+								</div>
+								<input type="text" name="tenct" id="tenct" class="form-control input-sm"
+									placeholder="Tên công ty">
+							</div>
+							<span class="sp-thongbao" id="tbtenct"></span>
+						</div>
+						<div class="form-group form-plus" id="invoice">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-receipt"></i></span>
+								</div>
+								<input type="text" name="hoadon" id="hoadon" class="form-control input-sm"
+									placeholder="Trị giá hóa đơn">
+							</div>
+							<span class="sp-thongbao" id="tbhoadon"></span>
+						</div>
+						<div class="form-group form-plus" id="evaluate">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-regular fa-comment"></i></span>
+								</div>
+								<input type="text" name="danhgia" id="danhgia" class="form-control input-sm"
+									placeholder="Đánh giá">
+							</div>
+							<span class="sp-thongbao" id="tbdanhgia"></span>
+						</div>
+
+					</form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer" id="modal-footer">
+					<button id="btnThemNV" type="button" class="btn btn-success">Thêm người dùng</button>
+					<button id="btnCapNhat" type="button" class="btn btn-success">Cập nhật</button>
+					<button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap -->
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!-- Date Picker -->
+	<!-- <script src="js/jquery-ui.min.js"></script> -->
+	<script src="./js/jquery-ui.js"></script>
+	<!-- <script src="js/datepicker.js"></script> -->
+	<script src="./model/DSNV.js"></script>
+	<script src="./model/Person.js"></script>
+	<script src="./controller/main.js"></script>
+	<script src="./util/validation.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#sidebarCollapse').on('click', function () {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
+</body>
+
+</html>
