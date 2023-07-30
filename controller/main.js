@@ -1,6 +1,6 @@
 const getelement= (selector) => document.querySelector(selector);
 
-let dsnv = new DSNV();
+let dsnv = new ListPerson();
 
 
 const laythongtin = (isEdit) => {
@@ -334,8 +334,7 @@ const removeNV = (ma) => {
 const updateNV = (ma) => {
     const index = dsnv.timNV(ma);
     const ps = dsnv.arrNV[index];
-
-
+    
     getelement("#chucvu").value = ps.loai;
     getelement("#tknv").value = ps.ma;
     getelement("#name").value = ps.hoten;

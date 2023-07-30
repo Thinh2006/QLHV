@@ -1,4 +1,4 @@
-class DSNV {
+class ListPerson {
     arrNV = [];
     constructor() {}
 
