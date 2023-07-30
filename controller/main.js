@@ -406,3 +406,19 @@ const formChange = getelement('#chucvu').onchange = () =>{
     }
 
 }
+
+getelement('#sort').onclick = () => {
+    const nameSort = (a,b) => {
+        const name1 = a.hoten.toLowerCase().split(" ").pop()[0]
+        const name2 = b.hoten.toLowerCase().split(" ").pop()[0]
+        let comparison = 0;
+        if (name1 > name2 ) {
+            comparison = 1
+        } else if (name1 < name2 ) {
+            comparison = -1
+        }
+        return comparison
+    }
+    dsnv.arrNV.sort(nameSort)
+    hienthi()
+}
