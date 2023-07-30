@@ -28,3 +28,7 @@
 .form-plus {
   display: none;
 }
+
+#sortUp, #sortDown {
+  cursor: pointer;
+}
